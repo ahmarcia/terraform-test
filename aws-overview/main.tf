@@ -13,6 +13,10 @@ resource "aws_instance" "example" {
   instance_type = "t2.micro"
 
   depends_on = [aws_s3_bucket.example]
+
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.example.public_ip} > ip_address.txt"
+  }
 }
 
 resource "aws_eip" "ip" {
