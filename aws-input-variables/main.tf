@@ -8,7 +8,7 @@ resource "aws_instance" "example" {
   instance_type = var.instance_type
 
   provisioner "local-exec" {
-    command = "echo ${var.region}, ${var.instance_type} - ${aws_instance.example.public_ip} > ip_address.txt"
+    command = "echo ${aws_instance.example.public_ip} > ip_address.txt"
   }
 }
 
